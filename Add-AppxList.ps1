@@ -31,7 +31,11 @@ function Download-AppxPackage {
     foreach($url in $DownloadLinks){
         $FileRequest = Invoke-WebRequest -Uri $url -UseBasicParsing #-Method Head
         $FileName = ($FileRequest.Headers["Content-Disposition"] | Select-String -Pattern  '(?<=filename=).+').matches.value
-        $FilePath = Join-Path $Path $FileName; $FilePath = Resolve-NameConflict($FilePath)
+        $FilePath = Join-Path $Path $FileName; #$FilePath = Resolve-NameConflict($FilePath)
+		If (!(test-Path $FilePath))
+		{
+			continue
+		}		
         [System.IO.File]::WriteAllBytes($FilePath, $FileRequest.content)
         echo $FilePath
     }
