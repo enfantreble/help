@@ -20,7 +20,7 @@ function Download-AppxPackage {
         if(Test-Path $Path){
             $i = 0;
             $item = (Get-Item $Path)
-            while(Test-Path $newPath){
+            while(Test-Path $newPath -and $i -lt 2){
                 $i += 1;
                 $newPath = Join-Path $item.DirectoryName ($item.BaseName+"($i)"+$item.Extension)
             }
