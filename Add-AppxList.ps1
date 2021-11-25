@@ -1,9 +1,11 @@
 function Download-AppxPackage {
-[CmdletBinding()]
   process {
-    $Uri=""https://www.microsoft.com/p/dynamic-theme/9nblggh1zbkw""
-
-    $Path = (Resolve-Path $env:temp).Path
+    $Uri="https://www.microsoft.com/p/dynamic-theme/9nblggh1zbkw"
+	$Path=$env:temp+"\uwp"
+    If (!(test-Path $Path))
+	{
+		New-Item -ItemType Directory -Force -Path $Path
+	}
     #Get Urls to download
     $WebResponse = Invoke-WebRequest -UseBasicParsing -Method 'POST' -Uri 'https://store.rg-adguard.net/api/GetFiles' -Body "type=url&url=$Uri&ring=Retail" -ContentType 'application/x-www-form-urlencoded'
     $LinksMatch = $WebResponse.Links | where {$_ -like '*.appx*'} | where {$_ -like '*_neutral_*' -or $_ -like "*_"+$env:PROCESSOR_ARCHITECTURE.Replace("AMD","X").Replace("IA","X")+"_*"} | Select-String -Pattern '(?<=a href=").+(?=" r)'
@@ -37,4 +39,7 @@ function Download-AppxPackage {
 }
 
 
-foreach ($line in Get-Content .\help\uwp.list) {  Download-AppxPackage ($line -replace '\s+', ',').split(",")[1]}
+foreach ($line in Get-Content .\uwp.list) {
+	$fullPackageName=($line -replace '\s+', ',').split(",")[1]
+	Download-AppxPackage $fullPackageName
+	}
