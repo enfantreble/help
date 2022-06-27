@@ -1,53 +1,56 @@
+Duplicate Cleaner Free
+Windows Subsystem for Linux Update
+office?
+
 draw.io
 Font Character Map
-Snipaste
-NuGet Package Explorer
 WhatsApp Desktop
-BeWidgets
 Chrome Remote Desktop
 Character Map UWP
-Ditto Clipboard
-Brave
-Bullzip PDF Printer
 CCleaner
+GlassWire
+
+LockHunter
+Microsoft Remote Desktop
+Tailscale
+Total Commander
+
 CPUID CPU-Z MSI
 CPUID HWMonitor Pro 1.46
 CrystalDiskInfo
 CrystalDiskMark
-Duplicate Cleaner Free
 Everything
 FastStone Image Viewer
 FileZilla Client
 FileZilla Server
-GlassWire
+
 Google Chrome
 KMPlayer 64X (remove only)
 LastPass for Windows Desktop
-LockHunter
+
 App Installer
 Power Apps
 Office
 OneDrive
 PowerShell
-Microsoft Remote Desktop
-Snipping Tool
+
 Sysinternals Suite
 Windows Terminal
 Notepad++
-Microsoft OneDrive
-Opera Stable
+
 RaiDrive
 Skype
 Speccy
-Tailscale
+
 TeamViewer
-Total Commander
+
 VirusTotal Uploader
 Vivaldi
-WhatsApp
+
 WizTree
 Google Keep
 Gmail
+
 Chrome
 Total Commander
 TotalCmd-FTP (File Transfers)
@@ -69,4 +72,7 @@ Joe's Own Editor for Windows
 GNU Midnight Commander
 paint.net
 Wireshark
-Windows Subsystem for Linux Update
+
+cmd setx GOOGLE_API_KEY AIzaSyAx0XSzIrVGEaJGD60EVryh6q5J3BrruS8
+cmd setx GOOGLE_DEFAULT_CLIENT_ID 63706570987-074g991bolcljh44an8jrhjsn559sjc5.apps.googleusercontent.com
+cmd setx GOOGLE_DEFAULT_CLIENT_SECRET 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
