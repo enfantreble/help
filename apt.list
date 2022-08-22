@@ -1,212 +1,52 @@
-7zip
-adb
-angryip
-aria2
-autossh
-bat
-binutils
-bottom
-cacert
-fonts-cascadia-code
-chromedriver
-cmake
-colordiff
-diff-so-fancy
-csview
-curl
-dark
-diffutils
-dos2unix
-everything
-everything-cli
-exa
-far
-fdfind
-ffmpeg
-fzf
-gcc
-gdrive
-gdu
-git
-grep
-gzip
-imagemagick
-iperf3
-jo
-jq
-jumpfs
-less
-lftp
-libxml2
-links
-ls
-lsd
-make
-mc
-mediainfo
-mediainfo-cli
-micro
-mosh-client
-multipass
-naiveproxy
-nano
-neofetch
-neovim
-ngrok
-nodejs
-nvim
-openhardwaremonitor
-openssl
-pget
-poetry
-psutils
-python3
-qbittorrent
-rclone.portable
-ripgrep
-sed
-selenium
-shasum
-speccy
-speedtest
-speedtest-cli
-sshfs
-syncthing
-tar
-telnet
-tldr
-tor-browser
-tree
-unrar
-unzip
-util-linux-ng
-vim
-vlc
-vmaf
-vt-cli
-watchexec
-wget
-which
-wttop
-zip
-zoxide
-7zip
-adb
-angryip
-aria2
-autohotkey.portable
-autossh
-bat
-binutils
-bottom
-busybox
-cacert
-cascadia-code-nerd-font
-cascadiacode
-cascadiacodeitalic
-cascadiacodepl
-cascadiacodepln
-cascadiafonts
-cascadiamono
-cascadiamonoitalic
-cascadiamonopl
-cascadiamonopl-italic
-chromedriver
-cmake
-crystaldiskinfo
-crystaldiskmark
-csview
-curl
-dark
-diffutils
-dos2unix
-everything
-everything-cli
-far
-fd
-ffmpeg
-filezilla
-fzf
-gcc
-gdrive
-gdu
-git
-git.install
-glasswire
-grep
-gsudo
-gzip
-imagemagick
-iperf3
-jo
-jq
-jumpfs
-less
-lftp
-libxml2
-links
-lockhunter
-ls
-lsd
-make
-mc
-mediainfo
-mediainfo-cli
-micro
-microsip
-mosh-client
-multipass
-naiveproxy
-nano
-neofetch
-neovim
-netcat
-ngrok
-nodejs
-nuget
-nvim
-openhardwaremonitor
-openssl
-paint.net
-pget
-poetry
-psutils
-pycharm-community
-python
-python3
-qbittorrent
-raidrive
-rclone.portable
-ripgrep
-sed
-selenium
-shasum
-speccy
-speedtest
-speedtest-cli
-ssh-copy-id
-sshfs
-sudo
-syncthing
-tar
-telnet
-tldr
-tor-browser
-totalcommander
-unrar
-unzip
-util-linux-ng
-vim
-vlc
-vmaf
-vt-cli
-watchexec
-wget
-which
-winfetch
-winfsp
-winscp.install
-wsa-pacman
-wttop
-zip
-zoxide
+sudo apt install 7zip
+sudo apt install adb
+sudo apt install aria2
+sudo apt install autossh
+sudo apt install bat
+sudo apt install binutils
+sudo apt install fonts-cascadia-code
+sudo apt install cmake
+sudo apt install colordiff
+sudo apt install curl
+sudo apt install diffutils
+sudo apt install dos2unix
+sudo apt install exa
+sudo apt install ffmpeg
+sudo apt install fzf
+sudo apt install gcc
+sudo apt install gdu
+sudo apt install git
+sudo apt install grep
+sudo apt install gzip
+sudo apt install imagemagick
+sudo apt install iperf3
+sudo apt install jo
+sudo apt install jq
+sudo apt install less
+sudo apt install lftp
+sudo apt install libxml2
+sudo apt install links
+sudo apt install make
+sudo apt install mc
+sudo apt install mediainfo
+sudo apt install micro
+sudo apt install nano
+sudo apt install neofetch
+sudo apt install neovim
+sudo apt install nodejs
+sudo apt install neovim
+sudo apt install openssl
+sudo apt install psutils
+sudo apt install python3
+sudo apt install qbittorrent
+sudo apt install rclone
+sudo apt install ripgrep
+sudo apt install sed
+sudo apt install speedtest-cli
+sudo apt install telnet
+sudo apt install tldr
+sudo apt install tree
+sudo apt install unrar
+sudo apt install unzip
+sudo apt install vim
+sudo apt install wget
