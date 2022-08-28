@@ -43,7 +43,11 @@ New-Item -Path Env:SCOOP_GLOBAL -Value 'c:\Tools\Scoop\'
 new-item -Path Env:SCOOP_CACHE -Value 'C:\Tools\Scoop\cache'
 New-Item -Path Env:SCOOP -Value 'c:\Tools\Scoop'
 
+<<<<<<< HEAD
 iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir c:\Tools\Scoop -ScoopGlobalDir c:\Tools\Scoop -ScoopCacheDir c:\Tools\Scoop\cache"
+=======
+vim
+>>>>>>> 1e0693a (copmmit)
 scoop install -g git vim less grep openssh
 cd c:\Tools
 mkdir Code
