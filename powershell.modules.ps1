@@ -1,6 +1,3 @@
-
-Name
-----
 7Zip4Powershell
 AudioDeviceCmdlets
 Carbon
@@ -18,7 +15,7 @@ Graphical
 GuiCompletion
 IconForGUI
 Logging
-Metadata
+Get-Metadata
 Microsoft.PowerShell.Archive
 Microsoft.PowerShell.ConsoleGuiTools
 Microsoft.PowerShell.Crescendo
@@ -46,7 +43,7 @@ PSPGP
 PSReadLine
 PSScriptAnalyzer
 PSScriptMenuGui
-PSScriptTools
+Get-PSScriptTools
 PSStringTemplate
 PSWindowsTerminal
 PSWindowsUpdate
