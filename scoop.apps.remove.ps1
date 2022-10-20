@@ -4,3 +4,4 @@ foreach ($currentItemName in ((Get-Content -Path scoop.apps.remove.list) -split 
 }
 scoop checkup
 Wr
+https://github.com/enfantreble/configuration-script-win/blob/main/install.ps1

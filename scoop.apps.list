@@ -1,375 +1,116 @@
-7zip
-activexcompatibilitymanager
-activexhelper
-adapterwatch
-adb
-addrview
-advancedrun
-allthreadsview
-alternatestreamview
-altstreamdump
-appaudioconfig
-appcompatibilityview
-appcrashview
-appnetworkcounter
-appreadwritecounter
-aria2
-autossh
-bat
-batteryinfoview
-binutils
-bluescreenview
-bluetoothcl
-bluetoothlogview
-bluetoothview
-bottom
-browseraddonsview
-browserdownloadsview
-browsinghistoryview
-bulkfilechanger
-bulletspassview
-busybox
-cacert
-Cascadia-Code
-ccat
-chromecookiesview
-chromedriver
-chromehistoryview
-cleanafterme
-clipboardic
-cmake
-controlmymonitor
-countrytraceroute
-credentialsfileview
-credhistview
-crystaldiskinfo
-csvfileview
-csview
-curl
-currports
-currprocess
-customexplorertoolbar
-customizeie
-dark
-dataprotectiondecryptor
-deviceioview
-devmanview
-diffutils
-diskcountersview
-disksmartview
-dllexportviewer
-dmg2img
-dnsdataview
-dnslookupview
-dnsquerysniffer
-domainhostingview
-dos2unix
-dotnetresourcesextract
-downtester
-driveletterview
-driverview
-dumpedid
-edgecookiesview
-encryptedregview
-eventlogchannelsview
-eventlogsourcesview
-everything
-everything-cli
-executedprogramslist
-extpassword
-far
-fastresolver
-favoritesview
-fbcacheview
-fd
-ffmpeg
-fileaccesserrorview
-fileactivitywatch
-filetypesman
-filezilla
-firefoxdownloadsview
-firmwaretablesview
-flashcookiesview
-folderchangesview
-foldersreport
-foldertimeupdate
-freecommander
-freespacelogview
-fulleventlogview
-fx
-fzf
-gacview
-gcc
-gdiview
-gdrive
-gdu
-getnir
-git
-glslang
-grep
-guipropview
-gzip
-handlecountersview
-hashmyfiles
-heapmemview
-hors
-hostednetworkstarter
-hostsman
-hotkeyslist
-htmlastext
-htmldocedit
-htmlq
-httpnetworksniffer
-iconsextract
-iecacheview
-iecookiesview
-iedesignmode
-iehistoryview
-imagecacheviewer
-imagemagick
-injecteddll
-innounp
-insideclipboard
-installedappview
-installedcodec
-installeddriverslist
-installedpackagesview
-iperf3
-ipinfooffline
-ipneighborsview
-ipnetinfo
-javascriptanimatorexpress
-jdupes
-jo
-joe
-jq
-jrview
-jumplistsview
-keyboardstateview
-lastactivityview
-less
-lftp
-libxml2
-links
-livecontactsview
-livetcpudpwatch
-loadeddllsview
-lsasecretsdump
-lsasecretsview
-lsd
-lux
-macaddressview
-madpassext
-mailpassview
-make
-managewirelessnetworks
-mc
-mediainfo
-messenpass
-metarweather
-micro
-mmcompview
-mmcsnapinsview
-mobilefilesearch
-monitorinfoview
-mosh-client
-most: https://github.com/jedsoft/most/tags
-muicacheview
-multicommander
-multimonitortool
-multipass
-myeventviewer
-mylastsearch
-myuninstaller
-mzcacheview
-mzcookiesview
-mzhistoryview
-naiveproxy
-Name
-nano
-navi
-neofetch
-neovim
-netbscanner
-netcat
-netconnectchoose
-netresview
-netrouteview
-networkconnectlog
-networkcounterswatch
-networkinterfacesview
-networklatencyview
-networkopenedfiles
-networktrafficview
-nexusfont
-ngrok
-nircmd
-nirext
-nirlauncher
-nk2edit
-nk2view
-nodejs
-none
-ntfslinksview
-nuget
-officeins
-offlineregistryfinder
-offlineregistryview
-openedfilesview
-opensavefilesview
-openssh
-openssl
-openwithview
-operacacheview
-operapassview
-outlookaccountsview
-outlookaddressbookview
-outlookattachview
-outlookstatview
-paint.net
-paintdotnet
-passwordsecurityscanner
-pget
-pinginfoview
-poetry
-previousfilesrecovery
-processactivityview
-processtcpsummary
-processthreadsview
-productkeyscanner
-produkey
-protectedstoragepassview
-pstpassword
-psutils
-python
-python3
-quicksetdns
-rclone
-recentfilesview
-regdllview
-regfileexport
-regfromapp
-registrychangesview
-regscanner
-remotedesktoppassview
-resourcesextract
-ripgrep
-routerpassview
-rtmpdumphelper
-runasdate
-runfromprocess
-rust
-s
-safaricacheview
-safarihistoryview
-scoop-completion
-searchfilterview
-securityquestionsview
-securitysoftview
-sed
-selenium
-seqdownload
-serviwin
-shadowcopyview
-shasum
-shellbagsview
-shellexview
-shellmenunew
-shellmenuview
-shortcutsman
-simplecodegenerator
-simpleprogramdebugger
-simplewmiview
-siteshoter
-skypecontactsview
-skypelogview
-smartsniff
-sniffpass
-so
-socketsniff
-soundvolumecommandline
-soundvolumeview
-specialfoldersview
-speedtest-cli
-ssh-copy-id
-startuprun
-sudo
-sudo C:\Tools\Scoop\apps\openssh\current\install-sshd.ps1
-syncthing
-sysexporter
-tabletextcompare
-tar
-taskschedulerview
-tcpconnectproblemview
-tcplogview
-timezonesview
-tldr
-turnedontimesview
-uninstallview
-unrar
-unxutils
-unzip
-urlprotocolview
-urlstringgrabber
-usbdeview
-usbdrivelog
-usblogview
-userassistview
-userprofilesview
-util-linux-ng
-vaultpasswordview
-videocacheview
-vim
-vmaf
-vncpassview
-volumouse
-vt-cli
-vulkan
-wakemeonlan
-watchexec
-webbrowserbookmarksview
-webcacheimageinfo
-webcamimagesave
-webcookiessniffer
-websitesniffer
-webvideocap
-wget
-whatinstartup
-whatishang
-which
-whoiscl
-whoisconnectedsniffer
-whoisthisdomain
-whosip
-wifichannelmonitor
-wifidiagnosticsview
-wifihistoryview
-wincrashreport
-windeflogview
-windefthreatsview
-windiff
-windowspasswordrecoverypackage
-windowsupdateshistoryviewer
-winexplorer
-winfetch
-winfontsview
-wingetui
-winlister
-winlogonview
-winmailpassrec
-winmerge
-winprefetchview
-winscp
-winsockservicesview
-winupdateslist
-wirelessconnectioninfo
-wirelesskeydump
-wirelesskeyview
-wirelessnetconsole
-wirelessnetview
-wirelessnetworkwatcher
-wsa-pacman
-wttop
-zip
-zipinstaller
-zoxide
+scoop install -g 7zip
+scoop install -g ack
+scoop install -g aria2
+scoop install -g bat
+scoop install -g bind
+scoop install -g binutils
+scoop install -g bottom
+scoop install -g busybox
+scoop install -g calibre
+scoop install -g CascadiaCode
+scoop install -g CascadiaMono
+scoop install -g ccat
+scoop install -g cmake
+scoop install -g copyq
+scoop install -g crystaldiskinfo
+scoop install -g csview
+scoop install -g curl
+scoop install -g dark
+scoop install -g diffutils
+scoop install -g dos2unix
+scoop install -g echoargs
+scoop install -g everything
+scoop install -g everything-cli
+scoop install -g far
+scoop install -g fclones
+scoop install -g fd
+scoop install -g fx
+scoop install -g fzf
+scoop install -g gcc
+scoop install -g gdrive
+scoop install -g gdu
+scoop install -g git
+scoop install -g grep
+scoop install -g grex
+scoop install -g gzip
+scoop install -g hack-font
+scoop install -g hors
+scoop install -g hostsman
+scoop install -g htmlq
+scoop install -g igrep
+scoop install -g imagemagick
+scoop install -g iperf3
+scoop install -g jdupes
+scoop install -g jo
+scoop install -g joe
+scoop install -g jq
+scoop install -g leaguemono
+scoop install -g less
+scoop install -g lftp
+scoop install -g libxml2
+scoop install -g links
+scoop install -g lsd
+scoop install -g make
+scoop install -g mc
+scoop install -g mediainfo
+scoop install -g micro
+scoop install -g mosh-client
+scoop install -g nano
+scoop install -g navi
+scoop install -g neofetch
+scoop install -g neovim
+scoop install -g netcat
+scoop install -g ninja
+scoop install -g nodejs
+scoop install -g nuget
+scoop install -g openssl
+scoop install -g pastel
+scoop install -g pget
+scoop install -g pkg-config
+scoop install -g poetry
+scoop install -g psutils
+scoop install -g python3
+scoop install -g qr
+scoop install -g rclone
+scoop install -g rclone-browser
+scoop install -g resource-hacker
+scoop install -g ripgrep
+scoop install -g ruby
+scoop install -g runcat
+scoop install -g rust
+scoop install -g s
+scoop install -g scoop
+scoop install -g scoop-completion
+scoop install -g scoop-viewer
+scoop install -g sed
+scoop install -g shasum
+scoop install -g so
+scoop install -g speedtest-cli
+scoop install -g sqlite
+scoop install -g ssh-copy-id
+scoop install -g sudo
+scoop install -g syncthing
+scoop install -g tar
+scoop install -g terminal-icons
+scoop install -g tldr
+scoop install -g trid
+scoop install -g unrar
+scoop install -g unzip
+scoop install -g urbanist
+scoop install -g util-linux-ng
+scoop install -g vcpkg
+scoop install -g vcredist-aio
+scoop install -g vcredist2022
+scoop install -g vim
+scoop install -g vmaf
+scoop install -g vt-cli
+scoop install -g wget
+scoop install -g which
+scoop install -g windiff
+scoop install -g winfetch
+scoop install -g wingetui
+scoop install -g winmerge
+scoop install -g winscp
+scoop install -g wttop
+scoop install -g zip
+scoop install -g zoxide

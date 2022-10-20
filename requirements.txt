@@ -275,3 +275,5 @@ win-unicode-console
 wrapt
 wsproto
 zipp
+vivid
+colorama
