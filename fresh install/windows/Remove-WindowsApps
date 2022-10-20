@@ -1,0 +1,69 @@
+
+function Remove-DefaultWindowsApps {
+    $UWPApps = @(
+        'Microsoft.BingNews '
+        'Microsoft.BingWeather'
+        'Microsoft.GamingApp'
+        'Microsoft.Getstarted'
+        'Microsoft.Microsoft3DViewer'
+        'Microsoft.MicrosoftOfficeHub'
+        'Microsoft.MicrosoftSolitaireCollection'
+        'Microsoft.MicrosoftStickyNotes'
+        'Microsoft.MicrosoftTeams'
+        'Microsoft.MixedReality.Portal'
+        'Microsoft.Office.OneNote'
+        'Microsoft.Paint'
+        'Microsoft.People'
+        'Microsoft.PowerAutomateDesktop'
+        'Microsoft.ScreenSketch'
+        'Microsoft.SkypeApp'
+        'Microsoft.Wallet'
+        'Microsoft.WindowsAlarms'
+        'Microsoft.WindowsCamera'
+        'microsoft.windowscommunicationsapps'
+        'Microsoft.WindowsFeedbackHub'
+        'Microsoft.WindowsMaps'
+        'Microsoft.WindowsNotepad'
+        'Microsoft.Windows.Photos'
+        'Microsoft.WindowsSoundRecorder'
+        'Microsoft.Xbox.TCUI'
+        'Microsoft.XboxApp'
+        'Microsoft.XboxGameOverlay'
+        'Microsoft.XboxGamingOverlay'
+        'Microsoft.XboxIdentityProvider'
+        'Microsoft.XboxSpeechToTextOverlay'
+        'Microsoft.YourPhone'
+        'Microsoft.ZuneMusic'
+        'Microsoft.ZuneVideo'
+
+    )
+
+
+    foreach ($UWPApp in $UWPApps) {
+        Get-AppxPackage -Name $UWPApp -AllUsers | Remove-AppxPackage
+        Get-AppxProvisionedPackage -Online | Where-Object DisplayName -EQ $UWPApp | Remove-AppxProvisionedPackage -Online
+    }
+    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f
+
+    Get-AppxProvisionedPackage -Online | Select-Object DisplayName
+}
+
+winget uninstall MicrosoftTeams_8wekyb3d8bbwe
+winget uninstall Microsoft.ZuneMusic_8wekyb3d8bbwe
+winget uninstall Microsoft.ZuneVideo_8wekyb3d8bbwe
+winget uninstall Microsoft.WindowsNotepad_8wekyb3d8bbwe
+winget uninstall Microsoft.XboxSpeechToTextOverlay_8wekyb3d8bbwe
+winget uninstall Microsoft.WindowsAlarms_8wekyb3d8bbwe
+winget uninstall Microsoft.ScreenSketch_8wekyb3d8bbwe
+winget uninstall Microsoft.PowerAutomateDesktop_8wekyb3d8bbwe
+winget uninstall Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe
+winget uninstall Microsoft.BingWeather_8wekyb3d8bbwe
+winget uninstall Microsoft.549981C3F5F10_8wekyb3d8bbwe #solitaire
+winget uninstall Microsoft.Paint_8wekyb3d8bbwe
+winget uninstall Microsoft.WindowsNotepad_8wekyb3d8bbwe
+winget uninstall Microsoft.WindowsMaps_8wekyb3d8bbwe
+winget uninstall Microsoft.Getstarted_8wekyb3d8bbwe
+winget uninstall Microsoft.Windows.Photos_8wekyb3d8bbwe
+
+Get-AppxPackage *SpotifyAB.SpotifyMusic* | Remove-AppxPackage
+Get-AppxPackage *Microsoft.Windows.Apprep.ChxApp | Remove-AppxPackage

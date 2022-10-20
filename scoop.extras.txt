@@ -1,0 +1,6 @@
+strokesplus.net      0.5.6.9 DEV-Tool
+explorerpatcher         22622.450.50.2 DEV-Tools
+kmplayer         DYI
+Logitech G HUB Logitech.GHUB 2022.8.2942 Tag: ghub winget
+Bullzip         DYI
+Samsung Magician         DYI

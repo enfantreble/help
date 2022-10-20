@@ -1,0 +1,33 @@
+code extensions
+code settings
+$profile
+hosts / keys /config
+rclone config
+scoop list
+appx list
+choco list
+winget list
+standalones
+ssh...
+
+make my own scoop
+powershell modules
+icons
+
+pip freeze
+raidrive export
+
+totalcmd setup / roaming
+strokes
+
+Gmouse notes
+vtudio settings
+
+Strokes settings
+NOtepat settings
+Micosoft media
+Ghub shortcuts (online ok)
+
+
+
+"C:\Program Files\totalcmd\TOTALCMD64.EXE" /T /O d:\Fonts
