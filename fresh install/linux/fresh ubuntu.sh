@@ -13,7 +13,7 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 
 
 # ~ basic utils
-sudo apt install openssh-server grep curl wget vim neovim net-tools less grep 
+sudo apt install openssh-server grep curl wget vim neovim net-tools less grep
 
 # !
 sudo apt install python3-pip golang tldr
@@ -48,7 +48,7 @@ sudo apt install ubuntu-desktop -y
 sudo apt install xrdp -y
 sudo systemctl status xrdp
 
-sudo adduser xrdp ssl-cert  
+sudo adduser xrdp ssl-cert
 sudo systemctl restart xrdp
 
 sudo ufw allow 3389
@@ -66,6 +66,10 @@ Xrdp uses startwm.sh
 #~ install basic stuff, impt sshd
 sudo apt install opensshserver grep curl wget vim nvim net-tools less grep
 //install sshd
+
+
+touch ~/.vimrc
+echo "set mouse-=a" >> ~/.vimrc
 
 # !in VMs we should have to correct stuff, should just wokbut just in case
 
