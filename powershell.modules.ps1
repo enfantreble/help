@@ -1,69 +1,69 @@
-Install-Module -Name 7Zip4Powershell
-Install-Module -Name AudioDeviceCmdlets
-Install-Module -Name Carbon
-Install-Module -Name ChocolateyGet
-Install-Module -Name CmdMode
-Install-Module -Name Cobalt
-Install-Module -Name CodeConversion
-Install-Module -Name Configuration
-Install-Module -Name Convert
-Install-Module -Name DSCR_FileAssoc
-Install-Module -Name EditorServicesCommandSuite
-Install-Module -Name EzTheme
-Install-Module -Name Foil
-Install-Module -Name FontUtilities
-Install-Module -Name Get-ActiveSession
-Install-Module -Name Get-ChildItemColor
-Install-Module -Name Get-MediaInfo
-Install-Module -Name Graphical
-Install-Module -Name GuiCompletion
-Install-Module -Name IconForGUI
-Install-Module -Name Logging
-Install-Module -Name Metadata
-Install-Module -Name Microsoft.PowerShell.Archive
-Install-Module -Name Microsoft.PowerShell.ConsoleGuiTools
-Install-Module -Name Microsoft.PowerShell.Crescendo
-Install-Module -Name Microsoft.PowerShell.WhatsNew
-Install-Module -Name ModuleBuilder
-Install-Module -Name MSTerminalSettings
-Install-Module -Name oh-my-posh
-Install-Module -Name Pansies
-Install-Module -Name platyPS
-Install-Module -Name Posh-SSH
-Install-Module -Name posh-sshell
-Install-Module -Name PoshColor
-Install-Module -Name PoshHosts
-Install-Module -Name PoShLog
-Install-Module -Name PowerLine
-Install-Module -Name PowerRemoteDesktop_Server
-Install-Module -Name PowerRemoteDesktop_Viewer
-Install-Module -Name PowerShellCookbook
-Install-Module -Name PowerShellForGitHub
-Install-Module -Name PowerShellGet
-Install-Module -Name ps2exe
-Install-Module -Name PsComplete
-Install-Module -Name PSConsoleTheme
-Install-Module -Name PSDesiredStateConfiguration
-Install-Module -Name PSEverything
-Install-Module -Name PSExpandLine
-Install-Module -Name PSFzf
-Install-Module -Name PSGalleryExplorer
-Install-Module -Name PSOneTools
-Install-Module -Name PSParallel
-Install-Module -Name PSPGP
-Install-Module -Name PSReadLine
-Install-Module -Name PSScriptAnalyzer
-Install-Module -Name PSScriptMenuGui
-Install-Module -Name PSScriptTools
-Install-Module -Name PSStringTemplate
-Install-Module -Name PSWindowsTermina
-Install-Module -Name PSWindowsUpdate
-Install-Module -Name TerminalBlocks
-Install-Module -Name Theme.PowerShell
-Install-Module -Name Theme.PSReadLine
-Install-Module -Name Theme.WindowsConsole
-Install-Module -Name TreeSize
-Install-Module -Name WindowsConsoleFonts
-Install-Module -Name WTToolBox
-Install-Module -Name xRobocopy
-Install-Module -Name xWindowsUpdate
+Install-Module -AllowPrerelease -Force -Verbose -Name 7Zip4Powershell
+Install-Module -AllowPrerelease -Force -Verbose -Name AudioDeviceCmdlets
+Install-Module -AllowPrerelease -Force -Verbose -Name Carbon
+Install-Module -AllowPrerelease -Force -Verbose -Name ChocolateyGet
+Install-Module -AllowPrerelease -Force -Verbose -Name CmdMode
+Install-Module -AllowPrerelease -Force -Verbose -Name Cobalt
+Install-Module -AllowPrerelease -Force -Verbose -Name CodeConversion
+Install-Module -AllowPrerelease -Force -Verbose -Name Configuration
+Install-Module -AllowPrerelease -Force -Verbose -Name Convert
+Install-Module -AllowPrerelease -Force -Verbose -Name DSCR_FileAssoc
+Install-Module -AllowPrerelease -Force -Verbose -Name EditorServicesCommandSuite
+Install-Module -AllowPrerelease -Force -Verbose -Name EzTheme
+Install-Module -AllowPrerelease -Force -Verbose -Name Foil
+Install-Module -AllowPrerelease -Force -Verbose -Name FontUtilities
+Install-Module -AllowPrerelease -Force -Verbose -Name Get-ActiveSession
+Install-Module -AllowPrerelease -Force -Verbose -Name Get-ChildItemColor
+Install-Module -AllowPrerelease -Force -Verbose -Name Get-MediaInfo
+Install-Module -AllowPrerelease -Force -Verbose -Name Graphical
+Install-Module -AllowPrerelease -Force -Verbose -Name GuiCompletion
+Install-Module -AllowPrerelease -Force -Verbose -Name IconForGUI
+Install-Module -AllowPrerelease -Force -Verbose -Name Logging
+Install-Module -AllowPrerelease -Force -Verbose -Name Metadata
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.Archive
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.ConsoleGuiTools
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.Crescendo
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.WhatsNew
+Install-Module -AllowPrerelease -Force -Verbose -Name ModuleBuilder
+Install-Module -AllowPrerelease -Force -Verbose -Name MSTerminalSettings
+Install-Module -AllowPrerelease -Force -Verbose -Name oh-my-posh
+Install-Module -AllowPrerelease -Force -Verbose -Name Pansies
+Install-Module -AllowPrerelease -Force -Verbose -Name platyPS
+Install-Module -AllowPrerelease -Force -Verbose -Name Posh-SSH
+Install-Module -AllowPrerelease -Force -Verbose -Name posh-sshell
+Install-Module -AllowPrerelease -Force -Verbose -Name PoshColor
+Install-Module -AllowPrerelease -Force -Verbose -Name PoshHosts
+Install-Module -AllowPrerelease -Force -Verbose -Name PoShLog
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerLine
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerRemoteDesktop_Server
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerRemoteDesktop_Viewer
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerShellCookbook
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerShellForGitHub
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerShellGet
+Install-Module -AllowPrerelease -Force -Verbose -Name ps2exe
+Install-Module -AllowPrerelease -Force -Verbose -Name PsComplete
+Install-Module -AllowPrerelease -Force -Verbose -Name PSConsoleTheme
+Install-Module -AllowPrerelease -Force -Verbose -Name PSDesiredStateConfiguration
+Install-Module -AllowPrerelease -Force -Verbose -Name PSEverything
+Install-Module -AllowPrerelease -Force -Verbose -Name PSExpandLine
+Install-Module -AllowPrerelease -Force -Verbose -Name PSFzf
+Install-Module -AllowPrerelease -Force -Verbose -Name PSGalleryExplorer
+Install-Module -AllowPrerelease -Force -Verbose -Name PSOneTools
+Install-Module -AllowPrerelease -Force -Verbose -Name PSParallel
+Install-Module -AllowPrerelease -Force -Verbose -Name PSPGP
+Install-Module -AllowPrerelease -Force -Verbose -Name PSReadLine
+Install-Module -AllowPrerelease -Force -Verbose -Name PSScriptAnalyzer
+Install-Module -AllowPrerelease -Force -Verbose -Name PSScriptMenuGui
+Install-Module -AllowPrerelease -Force -Verbose -Name PSScriptTools
+Install-Module -AllowPrerelease -Force -Verbose -Name PSStringTemplate
+Install-Module -AllowPrerelease -Force -Verbose -Name PSWindowsTermina
+Install-Module -AllowPrerelease -Force -Verbose -Name PSWindowsUpdate
+Install-Module -AllowPrerelease -Force -Verbose -Name TerminalBlocks
+Install-Module -AllowPrerelease -Force -Verbose -Name Theme.PowerShell
+Install-Module -AllowPrerelease -Force -Verbose -Name Theme.PSReadLine
+Install-Module -AllowPrerelease -Force -Verbose -Name Theme.WindowsConsole
+Install-Module -AllowPrerelease -Force -Verbose -Name TreeSize
+Install-Module -AllowPrerelease -Force -Verbose -Name WindowsConsoleFonts
+Install-Module -AllowPrerelease -Force -Verbose -Name WTToolBox
+Install-Module -AllowPrerelease -Force -Verbose -Name xRobocopy
+Install-Module -AllowPrerelease -Force -Verbose -Name xWindowsUpdate
