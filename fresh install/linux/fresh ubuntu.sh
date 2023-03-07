@@ -72,7 +72,7 @@ touch ~/.vimrc
 echo "set mouse-=a" >> ~/.vimrc
 
 # !in VMs we should have to correct stuff, should just wokbut just in case
-
+# //????
 		# $date = Get-Date -Format "yyyyMMddyyyy_HHmmss_ffff"
 		# $params = "-d $s sudo 'sed -rE ''s/^(\#?)(Port)([[:space:]]+)(.*)/\2 8022' -i.$date /etc/ssh/sshd_config"
 		# Write-Output $params
