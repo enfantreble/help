@@ -1,3 +1,0 @@
-scoop install echoscoop/idm -g
-scoop install echoscoop/contextmenumanager -g
-scoop install naderi/kmplayer -g

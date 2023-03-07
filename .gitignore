@@ -14,3 +14,6 @@
 .history/fresh install/linux/fresh ubuntu_20220822230422.sh
 .history/fresh install/linux/fresh ubuntu_20221101132114.sh
 .history/fresh install/linux/fresh ubuntu_20221101132120.sh
+/.history
+/.gitignore
+/.*

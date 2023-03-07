@@ -1,5 +1,5 @@
 # https://gist.githubusercontent.com/ay65535/6a5eb2c6b943c7243706dd2df715b5f2/raw/1f72154bea8836fe75684894baabad48f15340cd/after_cleaninstall.md
-<!-- vim: set fileencoding=utf-8 ff=unix expandtab ts=4 sw=4 ft=markdown : -->
+# <!-- vim: set fileencoding=utf-8 ff=unix expandtab ts=4 sw=4 ft=markdown : -->
 
 ```powershell
 # Change network profile
@@ -30,72 +30,317 @@ Start-Process ms-settings:about
 #Log in with MSA and activate using C47GP-QHPMX-VY6QK-GJ3CK-RDJR7
 
 Start-Process Powershell as admin
-Start-BitsTransfer -Source https://github.com/PowerShell/PowerShell/releases/download/v7.3.0-preview.5/PowerShell-7.3.0-preview.5-win-x64.msi -Destination PowerShell-7.3.0-preview.5-win-x64.msi
+# $pwsh=((Invoke-WebRequest 'https://api.github.com/repos/powershell/powershell/releases' | ConvertFrom-Json | Sort-Object -Property published_at -Descending) | where-object {($_.prerelease)} | Select-Object -First 1 -ExpandProperty assets |  Where-Object { $_.browser_download_url -like '*x64.msi'})
+# Start-BitsTransfer -Source $pwsh.browser_download_url -Destination $pwsh.name
 
-Start-BitsTransfer -Source https://github.com/microsoft/winget-cli/releases/download/v1.3.1681/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+Invoke-Expression "& { $(Invoke-RestMethod 'https://aka.ms/install-powershell.ps1') } -Destination C:\Powershell\7-preview -AddToPath -Preview"
+
+$tag = Invoke-WebRequest 'https://api.github.com/repos/microsoft/winget-cli/releases' | ConvertFrom-Json | Where-Object { $_.prerelease } | Sort-Object -Property published_at -Descending | Select-Object -First 1 -ExpandProperty tag_name
+Start-BitsTransfer -Source "https://github.com/microsoft/winget-cli/releases/download/$tag/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -Description Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+
+#wunget
+$modules_before = (winget list | Measure-Object -Line).lines
+# List of built-in apps to remove
+$UninstallPackages = @(
+    'Clipchamp.Clipchamp',
+    'Microsoft.549981C3F5F10',
+    'Microsoft.BingNews'
+    'Microsoft.BingWeather',
+    'Microsoft.GamingApp',
+    'Microsoft.GetHelp',
+    'Microsoft.Getstarted',
+    'Microsoft.MicrosoftJournal',
+    'Microsoft.MicrosoftSolitaireCollection',
+    'Microsoft.MicrosoftStickyNotes',
+    'Microsoft.MicrosoftOfficeHub',
+    'Microsoft.Paint',
+    'Microsoft.People',
+    'Microsoft.PowerAutomateDesktop',
+    'Microsoft.RawImageExtension',
+    'Microsoft.SecHealthUI',
+    'Microsoft.ScreenSketch',
+    'Microsoft.Todos',
+    'Microsoft.Whiteboard',
+    'Microsoft.Windows.Photos',
+    'Microsoft.WindowsAlarms',
+    'Microsoft.WindowsFeedbackHub',
+    'Microsoft.WindowsMaps',
+    'Microsoft.WindowsNotepad',
+    'Microsoft.WindowsSoundRecorder',
+    'Microsoft.WindowsTerminal',
+    'Microsoft.Xbox.TCUI',
+    'Microsoft.XboxGameOverlay',
+    'Microsoft.XboxGameCallableUI',
+    'Microsoft.XboxGamingOverlay',
+    'Microsoft.XboxIdentityProvider',
+    'Microsoft.XboxSpeechToTextOverlay',
+    'Microsoft.YourPhone',
+    'Microsoft.ZuneMusic',
+    'Microsoft.ZuneVideo',
+    'Microsoft.WindowsCamera',
+    'MicrosoftCorporationII.QuickAssist',
+    'MicrosoftTeams',
+    'BytedancePte.Ltd.TikTok',
+    'OneNoteFreeRetail - en-us'
+)
+
+$scoops = @(
+    'DEV-Tools/Czkawka-gui',
+    'DEV-Tools/Czkawka',
+    'DEV-Tools/Font-Awesome',
+    'DEV-Tools/hitomi-downloader',
+    'DEV-Tools/quick-access-popup',
+    'extras/appbuster',
+    'extras/baretail',
+    'extras/caesium-image-compressor',
+    'extras/calibre',
+    'extras/carnac',
+    'extras/copyq',
+    'extras/ddu',
+    'extras/dupeguru',
+    'extras/echoargs',
+    'extras/everything',
+    'extras/fclones',
+    'extras/ffmpeg-batch',
+    'extras/fontforge',
+    'extras/hostsman',
+    'extras/joe',
+    'extras/lockhunter',
+    'extras/mc',
+    'extras/mkcert',
+    'extras/nexusfont',
+    'extras/nirlauncher',
+    'extras/notepadplusplus',
+    'extras/openvpn-connect',
+    'extras/paint.net',
+    'extras/peazip',
+    'extras/Q-dir',
+    'extras/rclone-browser',
+    'extras/renderdoc',
+    'extras/runcat',
+    'extras/scoop-completion',
+    'extras/so',
+    'extras/terminal-icons',
+    'extras/totalcommander',
+    'extras/util-linux-ng',
+    'extras/vcredist-aio',
+    'extras/vcredist2022',
+    'extras/vncviewer',
+    'extras/winauth',
+    'extras/windiff',
+    'extras/wingetui',
+    'extras/winmerge',
+    'extras/winscp',
+    'extras/wsa-pacman',
+    'extras/xkill',
+    'extras/ydl-ui',
+    'extras/ytdlp-interface',
+    'main/7zip',
+    'main/ack',
+    'main/adb',
+    'main/aria2',
+    'main/bat',
+    'main/binutils',
+    'main/bottom',
+    'main/broot',
+    'main/cacert',
+    'main/ccat',
+    'main/chezmoi',
+    'main/cmake',
+    'main/coreutils',
+    'main/csview',
+    'main/curl',
+    'main/dark',
+    'main/diffutils',
+    'main/dmg2img',
+    'main/dos2unix',
+    'main/everything-cli',
+    'main/far',
+    'main/fd',
+    'main/ffmpeg',
+    'main/fontreg',
+    'main/fselect',
+    'main/fsviewer',
+    'main/fx',
+    'main/fzf',
+    'main/gcc',
+    'main/gdu',
+    'main/git',
+    'main/grep',
+    'main/grex',
+    'main/gzip',
+    'main/htmlq',
+    'main/hyperfine',
+    'main/imagemagick',
+    'main/iperf3',
+    'main/jdupes',
+    'main/jo',
+    'main/jq',
+    'main/less',
+    'main/links',
+    'main/lsd',
+    'main/lux',
+    'main/make',
+    'main/mediainfo',
+    'main/micro',
+    'main/mosh-client',
+    'main/naiveproxy',
+    'main/nano',
+    'main/navi',
+    'main/neofetch',
+    'main/neovim',
+    'main/netcat',
+    'main/ngrok',
+    'main/nircmd',
+    'main/nmap',
+    'main/nodejs',
+    'main/openssl',
+    'main/pastel',
+    'main/pdftk',
+    'main/perl',
+    'main/pget',
+    'main/poetry',
+    'main/procs',
+    'main/psutils',
+    'main/python',
+    'main/qr',
+    'main/rclone',
+    'main/ripgrep',
+    'main/ruby',
+    'main/rust',
+    'main/rustup-msvc',
+    'main/s',
+    'main/scoop-search',
+    'main/sd',
+    'main/sed',
+    'main/selenium',
+    'main/shasum',
+    'main/speedtest-cli',
+    'main/sqlite',
+    'main/sudo',
+    'main/tldr',
+    'main/touch',
+    'main/tre-command',
+    'main/trid',
+    'main/unrar',
+    'main/vcpkg',
+    'main/vmaf',
+    'main/vt-cli',
+    'main/watchexec',
+    'main/wget',
+    'main/which',
+    'main/wttop',
+    'main/youtube-dl',
+    'main/zip',
+    'main/zoxide'
+)
 
 
+Write-Output 'List of programs to uninstall', $UninstallPackages
+$UninstallPrograms = @(
+    'Microsoft.Terminal',
+    'aaa'
+)
+
+$InstalledPackages = Get-AppxPackage -AllUsers | Where-Object { ($UninstallPackages -contains $_.Name) }
+$ProvisionedPackages = Get-AppxProvisionedPackage -Online | Where-Object { ($UninstallPackages -contains $_.DisplayName) }
+
+# Remove provisioned packages first
+ForEach ($ProvPackage in $ProvisionedPackages) {
+    Write-Host -Object "Attempting to remove provisioned package: [$($ProvPackage.DisplayName)]..."
+    Try {
+        $Null =
+        eName $ProvPackage.PackageName -Online -ErrorAction Stop
+        Write-Host -Object "Successfully removed provisioned package: [$($ProvPackage.DisplayName)]"
+    } Catch { Write-Warning -Message "Failed to remove provisioned package: [$($ProvPackage.DisplayName)]" }
+}
+
+# Remove appx packages
+ForEach ($AppxPackage in $InstalledPackages) {
+    Write-Host -Object "Attempting to remove Appx package: [$($AppxPackage.Name)]..."
+    Try {
+        $Null = Remove-AppxPackage -Package $AppxPackage.PackageFullName -AllUsers -ErrorAction Stop
+        Write-Host -Object "Successfully removed Appx package: [$($AppxPackage.Name)]"
+    } Catch { Write-Warning -Message "Failed to remove Appx package: [$($AppxPackage.Name)]" }
+}
+
+# Check for unwanted software via Get-Package
+$InstalledPrograms = Get-Package | Where-Object { $UninstallPrograms -contains $_.Name }
+$InstalledPrograms | ForEach-Object {
+    Write-Host -Object "Attempting to uninstall: [$($_.Name)]..."
+    Try {
+        $Null = $_ | Uninstall-Package -AllVersions -Force -ErrorAction Stop
+        Write-Host -Object "Successfully uninstalled: [$($_.Name)]"
+    } Catch { Write-Warning -Message "Failed to uninstall: [$($_.Name)]" }
+}
+Write-Output "there were $modules_before , now there are  $((winget list | Measure-Object -Line).lines)"
 
 
-New-Item -Path Env:SCOOP_GLOBAL -Value 'c:\Tools\Scoop\'
-New-Item -Path Env:SCOOP_CACHE -Value 'C:\Tools\Scoop\cache'
-New-Item -Path Env:SCOOP_GLOBAL -Value 'c:\Tools\Scoop\'
-New-Item -Path Env:SCOOP -Value 'c:\Tools\Scoop'
-$va
-Invoke-RestMethod get.scoop.sh -OutFile 'install.ps1'
-.\install.ps1 -RunAsAdmin [-OtherParameters ...]
-# I don't care about other parameters and want an one-line command
-Invoke-Expression "& {$(Invoke-RestMethod get.scoop.sh)} -RunAsAdmin"
+winget install Hibbiki.Chromium
+# winget install Microsoft.WindowsTerminal.Preview
+# winget install Microsoft.PowerShell
+# winget install Google.ChromeRemoteDesktop
+winget install Google.Chrome
+# winget install Microsoft.OpenSSH.Beta
+winget install Microsoft.MouseWithoutBorders
+
+
+New-Item -Path Env:SCOOP_GLOBAL -Value 'c:\Scoop\Global\'
+New-Item -Path Env:SCOOP_CACHE -Value 'C:\Scoop\cache'
+New-Item -Path Env:SCOOP_GLOBAL -Value 'c:\Scoop\'
+New-Item -Path Env:SCOOP -Value 'c:\Scoop'
 
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod get.scoop.sh | Invoke-Expression
 
-scoop install sudo wget curl git
-sudo C:\Tools\Scoop\apps\openssh\current\install-sshd.ps1
-ssh-keygen.exe -t ed25519
+scoop install sudo wget curl git innounp dark aria2
+scoop config aria2-warning-enabled false
+sudo scoop install -g Font-Awesome
+sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 
-New-ItemProperty -Path 'HKLM:\SOFTWARE\OpenSSH' -Name DefaultShell -Value 'C:\\Tools\\PowerShell\\7-preview\\pwsh.EXE' -PropertyType String -Force
+New-ItemProperty -Path 'HKLM:\SOFTWARE\OpenSSH' -Name DefaultShell -Value 'C:\\Tools\\PowerShell\\7\\pwsh.EXE' -PropertyType String -Force
 New-ItemProperty -Path 'HKLM:\SOFTWARE\OpenSSH' -Name DefaultShellCommandOption -Value '/c' -PropertyType String -Force
+
+Write-Output 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL6es28QoqCgB0Ptl+BO++xdFry6uQi9t5I1N4m2AKcZ DanLucaci@NOR' > C:\ProgramData\ssh\administrators_authorized_keys
 
 //edit sshd confog
 //open port
 
 scoop bucket add extras
-scoop bucket add nirsoft
+scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git
+scoop bucket add nerd-fonts https://github.com/matthewjberger/scoop-nerd-fonts
+scoop bucket add fonts https://github.com/KnotUntied/scoop-fonts.git
+scoop bucket add nonportable https://github.com/ScoopInstaller/Nonportable
+scoop bucket add java https://github.com/ScoopInstaller/Java
+scoop bucket add echoscoop https://github.com/echoiron/echo-scoop
+scoop bucket add naderi https://github.com/naderi/scoop-bucket
 
-foreach ($line in [System.IO.File]::ReadLines('scoop.list')) {
-    scoop install $line.split(' ')[0] -g
-}
+scoop update
+scoop status
+scoop update scoop
+scoop update '*'
+scoop cleanup '*'
+scoop cache rm '*'
+scoop checkup '*'
 
-
-# Windows environment variable
-[System.Environment]::SetEnvironmentVariable('http_proxy', "$proxyUrl", 'Machine')
-[System.Environment]::SetEnvironmentVariable('https_proxy', "$proxyUrl", 'Machine')
-[System.Environment]::SetEnvironmentVariable('ftp_proxy', "$proxyUrl", 'Machine')
-[System.Environment]::SetEnvironmentVariable('no_proxy', "$($bypassList -join ',')", 'Machine')
-
+# foreach ($line in [System.IO.File]::ReadLines('scoop.list')) {
+#     scoop install $line.split(' ')[0]
+# }
+reg import 'C:\Scoop\apps\everything\current\install-context.reg'
+C:\Scoop\apps\scoop-completion\current\add-profile-content.ps1
+'C:\Scoop\apps\wsa-pacman\current\install-associations.reg'
+#"C:\Program Files\WindowsApps\Microsoft.PowerShellPreview_7.3.3.0_x64__8wekyb3d8bbwe\pwsh.EXE" -NoExit -noprofile -nologo  "c:\Users\Dan Lucaci\OneDrive\Code\Pwsh\icons\setIcon.ps1" %P%N "%T"
 # WinHTTP proxy
-netsh winhttp set proxy proxy-server="199.19.250.205:80" bypass-list="<local>;$($bypassList -join ';')"
-netsh winhttp show proxy
 
 # Git config
 git config --file $HOME/.config/git/config https.proxy http://199.19.250.205:80/
 git config --file $HOME/.config/git/config http.proxy http://199.19.250.205:80/
+
+winkey
 C47GP-QHPMX-VY6QK-GJ3CK-RDJR7
 # erase proxy settings
 ## Temporary
-Remove-Item Env:\https_proxy
-Remove-Item Env:\http_proxy
-Remove-Item Env:\ftp_proxy
-Remove-Item Env:\no_proxy
-## Permanently
-[System.Environment]::SetEnvironmentVariable('http_proxy', $null, 'Machine')
-[System.Environment]::SetEnvironmentVariable('https_proxy', $null, 'Machine')
-[System.Environment]::SetEnvironmentVariable('ftp_proxy', $null, 'Machine')
-[System.Environment]::SetEnvironmentVariable('no_proxy', $null, 'Machine')
-netsh winhttp reset proxy
-git config --file $HOME/.config/git/config --unset https.proxy
-git config --file $HOME/.config/git/config --unset http.proxy
-```
 
 ```powershell
 Get-ExecutionPolicy
@@ -121,64 +366,16 @@ Get-Module PowerShellGet, PackageManagement
 # https://qiita.com/arachan@github/items/399da4a19ac3a20205a7#comment-dbc66aa8a1b35eb06fdb
 # https://chocolatey.org/install#installing-chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-Find-PackageProvider Chocolatey -Verbose
-Get-PackageProvider Chocolatey -Verbose -ForceBootstrap
-Install-PackageProvider Chocolatey -Verbose
 
-choco config set proxy "$proxyServer"
-
-# https://github.com/jianyunt/ChocolateyGet
-Get-PackageProvider
-Find-PackageProvider ChocolateyGet -Verbose
-Install-PackageProvider ChocolateyGet -Verbose
-Import-PackageProvider ChocolateyGet -Verbose
-Get-PackageProvider -Verbose
-
-Get-Command -Module PowerShellGet
-Get-Command Find-Module
-Get-Command -Module PackageManagement
-Get-Module PSReadline
-Find-Module PSReadline
-Find-Module PSReadline -AllowPrerelease
 Install-Module PSReadline -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
 
-we wait for afea hours
-
+#we wait for afea hours
 
 Find-Package -ProviderName ChocolateyGet -Name git
-choco info docker-desktop
-if ($env:PROCESSOR_ARCHITECTURE.Contains('64')) {
-    #Install-Package -ProviderName ChocolateyGet -Name docker-desktop -AdditionalArguments '--pre'
-    winget install 'Docker Desktop Edge'
-}
-else {
-    Install-Package -ProviderName ChocolateyGet -Name docker-machine, openssh
-}
-#   "features": {
-#    "buildkit": true
-#  }
-choco feature enable -n allowGlobalConfirmation
-## fonts
 Install-Package -ProviderName ChocolateyGet -Name FiraCode, fonts-ricty-diminished
-## platforms
-#Install-Package -ProviderName ChocolateyGet -Name powershell-core    -AdditionalArguments '--install-arguments="REGISTER_MANIFEST=1 ENABLE_PSREMOTING=1" --packageparameters "/CleanUpPath"'
-#Install-Package -ProviderName ChocolateyGet -Name powershell-preview -AdditionalArguments '--install-arguments="REGISTER_MANIFEST=1 ENABLE_PSREMOTING=1" --packageparameters "/CleanUpPath"'
-cinst powershell-preview --install-arguments="REGISTER_MANIFEST=1 ENABLE_PSREMOTING=1" --packageparameters '/CleanUpPath'
-$POWERSHELL_TELEMETRY_OPTOUT = $true
-$POWERSHELL_TELEMETRY_OPTOUT
+
 Enable-PSRemoting -SkipNetworkProfileCheck
 
-Install-Package -ProviderName ChocolateyGet -Name msys2 -AdditionalArguments '--params "/NoUpdate /InstallDir:C:\tools\msys64"'
-# choco install ruby --version=1.8.7.37402
-Install-Package -ProviderName ChocolateyGet -Name ruby -AdditionalArguments '--version=1.8.71.37402'
-Install-Package -ProviderName ChocolateyGet -Name ruby
-ridk install 2 3
-# rbenv-win
-Invoke-WebRequest -Uri https://gist.githubusercontent.com/nak1114/7ea63204203883c5884d/raw/2dfeab2798cb54170cd872a1068aa19b9bef10dc/install-rbenv-win.bat -OutFile ~/Downloads/install-rbenv-win.bat
-Start-Process ~/Downloads/install-rbenv-win.bat
-
-Install-Package -ProviderName ChocolateyGet -Name git -AdditionalArguments '--params "/GitAndUnixToolsOnPath /NoAutoCrlf /NoShellIntegration"'
-Set-Location $HOME\OneDrive\Documents
 git clone https://github.com/ay65535/dotfiles.git
 Set-Location $HOME
 mkdir .cache
@@ -246,8 +443,7 @@ $uri = $([String]$response.GetResponseHeader('Location')).Replace('tag', 'downlo
 $uri -match '-[\d\.]+'
 if ($env:PROCESSOR_ARCHITECTURE.Contains('64')) {
     $arch = '64'
-}
-else {
+} else {
     $arch = '32'
 }
 $filename = 'git-sdk-installer' + $Matches[0] + '-' + $arch + '.7z.exe'
@@ -274,7 +470,7 @@ scoop config aria2-warning-enabled false
 
 scoop checkup '*'
 scoop config aria2-warning-enabled false curl jq fx
-curl https://api.github.com/repos/powershell/powershell/releases | jq '.[].browser_download_url' | grep 'x64.msi'
+Invoke-WebRequest https://api.github.com/repos/powershell/powershell/releases | jq '.[].browser_download_url' | grep 'x64.msi'
 
 # WARN  Windows Defender may slow down or disrupt installs with realtime scanning.
 #   Consider running:
@@ -313,6 +509,11 @@ scoop update '*'
 scoop cleanup '*'
 scoop cache rm '*'
 scoop checkup '*'
+
+scoop install echoscoop/idm -g
+scoop install echoscoop/contextmenumanager -g
+scoop install naderi/kmplayer -g
+
 
 ## Download PowerShell 6
 $url = 'https://github.com/PowerShell/PowerShell/releases/latest/'
@@ -414,3 +615,75 @@ winget install XPDM17HK323C4X -s msstore
 winget install 9NZTWSQNTD0S	-s msstore
 winget install 9NKSQGP7F2NH -s msstore
 winget install 9NF8H0H7WMLT -s msstore
+
+
+Install-Module -AllowPrerelease -Force -Verbose -Name 7Zip4Powershell
+Install-Module -AllowPrerelease -Force -Verbose -Name AudioDeviceCmdlets
+Install-Module -AllowPrerelease -Force -Verbose -Name Carbon
+Install-Module -AllowPrerelease -Force -Verbose -Name ChocolateyGet
+Install-Module -AllowPrerelease -Force -Verbose -Name CmdMode
+Install-Module -AllowPrerelease -Force -Verbose -Name Cobalt
+Install-Module -AllowPrerelease -Force -Verbose -Name CodeConversion
+Install-Module -AllowPrerelease -Force -Verbose -Name Configuration
+Install-Module -AllowPrerelease -Force -Verbose -Name Convert
+Install-Module -AllowPrerelease -Force -Verbose -Name Crescendo
+Install-Module -AllowPrerelease -Force -Verbose -Name DSCR_FileAssoc
+Install-Module -AllowPrerelease -Force -Verbose -Name EditorServicesCommandSuite
+Install-Module -AllowPrerelease -Force -Verbose -Name EzTheme
+Install-Module -AllowPrerelease -Force -Verbose -Name Foil
+Install-Module -AllowPrerelease -Force -Verbose -Name FontUtilities
+Install-Module -AllowPrerelease -Force -Verbose -Name Get-ActiveSession
+Install-Module -AllowPrerelease -Force -Verbose -Name Get-ChildItemColor
+Install-Module -AllowPrerelease -Force -Verbose -Name Get-MediaInfo
+Install-Module -AllowPrerelease -Force -Verbose -Name Graphical
+Install-Module -AllowPrerelease -Force -Verbose -Name GuiCompletion
+Install-Module -AllowPrerelease -Force -Verbose -Name IconForGUI
+Install-Module -AllowPrerelease -Force -Verbose -Name Logging
+Install-Module -AllowPrerelease -Force -Verbose -Name Metadata
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.Archive
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.ConsoleGuiTools
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.Crescendo
+Install-Module -AllowPrerelease -Force -Verbose -Name Microsoft.PowerShell.WhatsNew
+Install-Module -AllowPrerelease -Force -Verbose -Name ModuleBuilder
+Install-Module -AllowPrerelease -Force -Verbose -Name MSTerminalSettings
+Install-Module -AllowPrerelease -Force -Verbose -Name oh-my-posh
+Install-Module -AllowPrerelease -Force -Verbose -Name Pansies
+Install-Module -AllowPrerelease -Force -Verbose -Name platyPS
+Install-Module -AllowPrerelease -Force -Verbose -Name Posh-SSH
+Install-Module -AllowPrerelease -Force -Verbose -Name posh-sshell
+Install-Module -AllowPrerelease -Force -Verbose -Name PoshColor
+Install-Module -AllowPrerelease -Force -Verbose -Name PoshHosts
+Install-Module -AllowPrerelease -Force -Verbose -Name PoShLog
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerLine
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerRemoteDesktop_Server
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerRemoteDesktop_Viewer
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerShellCookbook
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerShellForGitHub
+Install-Module -AllowPrerelease -Force -Verbose -Name PowerShellGet
+Install-Module -AllowPrerelease -Force -Verbose -Name ps2exe
+Install-Module -AllowPrerelease -Force -Verbose -Name PsComplete
+Install-Module -AllowPrerelease -Force -Verbose -Name PSConsoleTheme
+Install-Module -AllowPrerelease -Force -Verbose -Name PSDesiredStateConfiguration
+Install-Module -AllowPrerelease -Force -Verbose -Name PSEverything
+Install-Module -AllowPrerelease -Force -Verbose -Name PSExpandLine
+Install-Module -AllowPrerelease -Force -Verbose -Name PSFzf
+Install-Module -AllowPrerelease -Force -Verbose -Name PSGalleryExplorer
+Install-Module -AllowPrerelease -Force -Verbose -Name PSOneTools
+Install-Module -AllowPrerelease -Force -Verbose -Name PSParallel
+Install-Module -AllowPrerelease -Force -Verbose -Name PSPGP
+Install-Module -AllowPrerelease -Force -Verbose -Name PSReadLine
+Install-Module -AllowPrerelease -Force -Verbose -Name PSScriptAnalyzer
+Install-Module -AllowPrerelease -Force -Verbose -Name PSScriptMenuGui
+Install-Module -AllowPrerelease -Force -Verbose -Name PSScriptTools
+Install-Module -AllowPrerelease -Force -Verbose -Name PSStringTemplate
+Install-Module -AllowPrerelease -Force -Verbose -Name PSWindowsTermina
+Install-Module -AllowPrerelease -Force -Verbose -Name PSWindowsUpdate
+Install-Module -AllowPrerelease -Force -Verbose -Name TerminalBlocks
+Install-Module -AllowPrerelease -Force -Verbose -Name Theme.PowerShell
+Install-Module -AllowPrerelease -Force -Verbose -Name Theme.PSReadLine
+Install-Module -AllowPrerelease -Force -Verbose -Name Theme.WindowsConsole
+Install-Module -AllowPrerelease -Force -Verbose -Name TreeSize
+Install-Module -AllowPrerelease -Force -Verbose -Name WindowsConsoleFonts
+Install-Module -AllowPrerelease -Force -Verbose -Name WTToolBox
+Install-Module -AllowPrerelease -Force -Verbose -Name xRobocopy
+Install-Module -AllowPrerelease -Force -Verbose -Name xWindowsUpdate
