@@ -1,11 +1,7 @@
 # https://gist.githubusercontent.com/ay65535/6a5eb2c6b943c7243706dd2df715b5f2/raw/1f72154bea8836fe75684894baabad48f15340cd/after_cleaninstall.md
 # <!-- vim: set fileencoding=utf-8 ff=unix expandtab ts=4 sw=4 ft=markdown : -->
 
-```powershell
-# Change network profile
-$privNwIfIdx = Get-NetConnectionProfile | Where-Object -Property Name -Like 'eoRT*' | Select-Object -ExpandProperty 'InterfaceIndex'
-Set-NetConnectionProfile -InterfaceIndex $privNwIfIdx -NetworkCategory Private
-```
+Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Privat
 
 ```bat
 Start-Process ms-settings:about
@@ -35,54 +31,76 @@ Start-Process Powershell as admin
 
 Invoke-Expression "& { $(Invoke-RestMethod 'https://aka.ms/install-powershell.ps1') } -Destination C:\Powershell\7-preview -AddToPath -Preview"
 
-$tag = Invoke-WebRequest 'https://api.github.com/repos/microsoft/winget-cli/releases' | ConvertFrom-Json | Where-Object { $_.prerelease } | Sort-Object -Property published_at -Descending | Select-Object -First 1 -ExpandProperty tag_name
+$tag = (Invoke-WebRequest 'https://api.github.com/repos/microsoft/winget-cli/releases' | ConvertFrom-Json | Sort-Object -Property published_at -Descending | Where-Object { $_.prerelease } ) | Select-Object -First 1 -ExpandProperty tag_name
 Start-BitsTransfer -Source "https://github.com/microsoft/winget-cli/releases/download/$tag/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -Description Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 
 #wunget
 $modules_before = (winget list | Measure-Object -Line).lines
 # List of built-in apps to remove
+
+
+
 $UninstallPackages = @(
-    'Clipchamp.Clipchamp',
-    'Microsoft.549981C3F5F10',
-    'Microsoft.BingNews'
-    'Microsoft.BingWeather',
-    'Microsoft.GamingApp',
-    'Microsoft.GetHelp',
-    'Microsoft.Getstarted',
-    'Microsoft.MicrosoftJournal',
-    'Microsoft.MicrosoftSolitaireCollection',
-    'Microsoft.MicrosoftStickyNotes',
-    'Microsoft.MicrosoftOfficeHub',
-    'Microsoft.Paint',
-    'Microsoft.People',
-    'Microsoft.PowerAutomateDesktop',
-    'Microsoft.RawImageExtension',
-    'Microsoft.SecHealthUI',
-    'Microsoft.ScreenSketch',
-    'Microsoft.Todos',
-    'Microsoft.Whiteboard',
-    'Microsoft.Windows.Photos',
-    'Microsoft.WindowsAlarms',
-    'Microsoft.WindowsFeedbackHub',
-    'Microsoft.WindowsMaps',
-    'Microsoft.WindowsNotepad',
-    'Microsoft.WindowsSoundRecorder',
-    'Microsoft.WindowsTerminal',
-    'Microsoft.Xbox.TCUI',
-    'Microsoft.XboxGameOverlay',
-    'Microsoft.XboxGameCallableUI',
-    'Microsoft.XboxGamingOverlay',
-    'Microsoft.XboxIdentityProvider',
-    'Microsoft.XboxSpeechToTextOverlay',
-    'Microsoft.YourPhone',
-    'Microsoft.ZuneMusic',
-    'Microsoft.ZuneVideo',
-    'Microsoft.WindowsCamera',
-    'MicrosoftCorporationII.QuickAssist',
-    'MicrosoftTeams',
-    'BytedancePte.Ltd.TikTok',
-    'OneNoteFreeRetail - en-us'
+    '*BytedancePte.Ltd.TikTok*',
+    '*Clipchamp.Clipchamp',
+    '*Microsoft.549981C3F5F10*',
+    '*Microsoft.BingNews'
+    '*Microsoft.BingWeather*',
+    '*Microsoft.GamingApp*',
+    '*Microsoft.GetHelp*',
+    '*Microsoft.Getstarted*',
+    '*Microsoft.Messaging**',
+    '*Microsoft.Microsoft3DViewer*',
+    '*Microsoft.MicrosoftJournal*',
+    '*Microsoft.MicrosoftOfficeHub*',
+    '*Microsoft.MicrosoftSolitaireCollection*',
+    '*Microsoft.MicrosoftStickyNotes*',
+    '*Microsoft.NetworkSpeedTest*',
+    '*Microsoft.Office.Sway*',
+    '*Microsoft.OneConnect*',
+    '*Microsoft.Paint*',
+    '*Microsoft.People*',
+    '*Microsoft.PowerAutomateDesktop*',
+    '*Microsoft.Print3D*',
+    '*Microsoft.RawImageExtension*',
+    '*Microsoft.ScreenSketch*',
+    '*Microsoft.SecHealthUI*',
+    '*Microsoft.SkypeApp*',
+    '*Microsoft.Whiteboard*',
+    '*Microsoft.Windows.Photos*',
+    '*Microsoft.WindowsAlarms*',
+    '*Microsoft.WindowsCamera*',
+    '*microsoft.windowscommunicationsapps*',
+    '*Microsoft.WindowsFeedbackHub*',
+    '*Microsoft.WindowsMaps*',
+    '*Microsoft.WindowsNotepad*',
+    '*Microsoft.WindowsSoundRecorder*',
+    '*Microsoft.WindowsTerminal*',
+    '*Microsoft.Xbox.TCUI*',
+    '*Microsoft.XboxApp*',
+    '*Microsoft.XboxGameCallableUI*',
+    '*Microsoft.XboxGameOverlay*',
+    '*Microsoft.XboxGamingOverlay*',
+    '*Microsoft.XboxIdentityProvider*',
+    '*Microsoft.XboxSpeechToTextOverlay*',
+    '*Microsoft.YourPhone*',
+    '*Microsoft.ZuneMusic*',
+    '*Microsoft.ZuneVideo*',
+    '*MicrosoftCorporationII.QuickAssist*',
+    '*MicrosoftTeams*',
+    '*OneNoteFreeRetail - en-us*',
+    '*EclipseManager*'
+    '*ActiproSoftwareLLC*'
+    '*AdobeSystemsIncorporated.AdobePhotoshopExpress*'
+    '*Duolingo-LearnLanguagesforFree*'
+    '*PandoraMediaInc*'
+    '*CandyCrush*'
+    '*Wunderlist*'
+    '*Flipboard*'
+    '*Twitter*'
+    '*Facebook*'
+    '*Spotify*'
 )
 
 $scoops = @(
@@ -277,9 +295,9 @@ $InstalledPrograms | ForEach-Object {
 Write-Output "there were $modules_before , now there are  $((winget list | Measure-Object -Line).lines)"
 
 
-winget install Hibbiki.Chromium
-# winget install Microsoft.WindowsTerminal.Preview
-# winget install Microsoft.PowerShell
+winget install Hibbiki.Chromium --accept-source-agreements
+winget install Microsoft.WindowsTerminal.Preview --accept-source-agreements
+# winget insta
 # winget install Google.ChromeRemoteDesktop
 winget install Google.Chrome
 # winget install Microsoft.OpenSSH.Beta
@@ -687,3 +705,15 @@ Install-Module -AllowPrerelease -Force -Verbose -Name WindowsConsoleFonts
 Install-Module -AllowPrerelease -Force -Verbose -Name WTToolBox
 Install-Module -AllowPrerelease -Force -Verbose -Name xRobocopy
 Install-Module -AllowPrerelease -Force -Verbose -Name xWindowsUpdate
+
+
+function SetRegionalSettings() {
+    #http://stackoverflow.com/questions/4235243/how-to-set-timezone-using-powershell
+    &"$env:windir\system32\tzutil.exe" /s 'AUS Eastern Standard Time'
+
+    Set-ItemProperty -Path 'HKCU:\Control Panel\International' -Name sShortDate -Value dd-MMM-yy
+    Set-ItemProperty -Path 'HKCU:\Control Panel\International' -Name sCountry -Value Australia
+    Set-ItemProperty -Path 'HKCU:\Control Panel\International' -Name sShortTime -Value HH:mm
+    Set-ItemProperty -Path 'HKCU:\Control Panel\International' -Name sTimeFormat -Value HH:mm:ss
+    Set-ItemProperty -Path 'HKCU:\Control Panel\International' -Name sLanguage -Value ENA
+}
