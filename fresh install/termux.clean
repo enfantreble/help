@@ -1,5 +1,4 @@
 7zip
-adb
 aria2
 autossh
 bash-completion
@@ -18,9 +17,7 @@ elinks
 fd
 fdupes
 file
-fonts-cascadia-code
 fzf
-gcc
 gdu
 git
 grep
@@ -50,15 +47,11 @@ nodejs
 openssh
 psutils
 python
-qbittorrent-nox
 ranger
 rclone
 ripgrep
 rust
-speedtest-cli
-telnet
 termux-api
-tldr
 toilet
 tracepath
 tree
