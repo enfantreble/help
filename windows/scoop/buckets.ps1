@@ -1,0 +1,2 @@
+scoop bucket list | Format-Table { "scoop bucket add $($_.Name) $($_.Source)" } -HideTableHeaders | Out-File -FilePath buckets.list
+scoop list | Format-Table { "scoop install $($_.Source)/$($_.Name)" } -HideTableHeaders | Out-File -FilePath scoop.install.ps1

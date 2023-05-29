@@ -1,0 +1,1 @@
+reg import "C:\scoop\apps\notepadplusplus\current\install-context.reg"

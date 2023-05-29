@@ -1,0 +1,15 @@
+
+scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git
+scoop bucket add dodorz https://github.com/dodorz/scoop.git
+scoop bucket add echoscoop https://github.com/echoiron/echo-scoop
+scoop bucket add extras https://github.com/ScoopInstaller/Extras
+scoop bucket add fonts https://github.com/KnotUntied/scoop-fonts.git
+scoop bucket add igrep https://github.com/konradsz/igrep.git
+scoop bucket add java https://github.com/ScoopInstaller/Java
+scoop bucket add main https://github.com/ScoopInstaller/Main
+scoop bucket add naderi https://github.com/naderi/scoop-bucket
+scoop bucket add nerd-fonts https://github.com/matthewjberger/scoop-nerd-fonts
+scoop bucket add nirsoft https://github.com/kodybrown/scoop-nirsoft
+scoop bucket add nonportable https://github.com/ScoopInstaller/Nonportable
+scoop bucket add w-bucket https://github.com/hors-org/w-bucket
+
