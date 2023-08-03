@@ -11,6 +11,8 @@ curl
 diffutils
 dos2unix
 exa
+elinks
+wget
 ffmpeg
 fzf
 gcc
@@ -34,7 +36,6 @@ nano
 neofetch
 neovim
 nodejs
-neovim
 openssl
 psutils
 python3
@@ -44,19 +45,16 @@ ripgrep
 sed
 speedtest-cli
 telnet
-tldr
 tree
 unrar
 unzip
-vim
-wget
 dmg2img
 hyperfine
-imagemagick
 llvm
 multitail
 nnn
 far
 htmlq
 echoargs
-ffmpeg ffmpeg-batch
+ffmpeg
+ffmpeg-batch
