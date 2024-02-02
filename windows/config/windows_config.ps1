@@ -84,56 +84,7 @@ Enable-WindowsOptionalFeature -FeatureName 'Containers-DisposableClientVM' -All 
 # Enables Windows Subsystems
 Enable-WindowsOptionalFeature -Online -FeatureName 'Microsoft-Windows-Subsystem-Linux' -NoRestart -WarningAction SilentlyContinue | Out-Null
 
-# Install Fundamentals
-choco install chocolateygui -y
-choco install jdk8 autohotkey -y
-choco install 7zip -y
-choco install microsoft-edge firefox -y
-choco install everything --params '/service' -y
-choco install deluge -y
-choco install openssh royalts-v5 mobaxterm -y
-choco install powershell-core -y
-choco install microsoft-windows-terminal -y
-choco install docker-desktop -y
-choco install discord notion -y
 
-# Install Source Management apps
-choco install git kdiff3 gitextensions -y
-
-# Install IDE
-choco install vscode vscodium sublimetext3 -y
-choco install sublimemerge -y
-choco install steam epicgameslauncher -y
-
-# Autohotkey script, capslock to Windows, ctrl + alt + v for pasting in remote sessions
-Write-Host 'Place default AHK script in Startup folder. Shell:startup to navigate there'
-
-New-Item "$env:appdata\Microsoft\Windows\Start Menu\Programs\Startup\scripts.ahk" -type file -Value '
-; Ctrl + alt + v --> Type out the clipboard
-^!v::
-SendRaw, %Clipboard%
-return
-
-; Shift + Alt + Left --> becomes Shift + Home
-!+Left::
-Send, {Shift down}{Home}{Shift up}
-return
-
-; Shift + Alt + Right --> becomes Shift + End
-!+Right::
-Send, {Shift down}{End}{Shift up}
-return
-
-; Google Search selected text --> Ctrl + Shift + C
- ^+c::
- {
-  Send, ^c
-  Sleep 50
-  Run, http://www.google.com/search?q=%clipboard%
-  Return
- }
-return
-'
 
 # Taken from - https://gist.github.com/alirobe/7f3b34ad89a159e6daa1
 Get-AppxPackage Microsoft.Windows.ParentalControls | Remove-AppxPackage
@@ -241,15 +192,3 @@ winget uninstall Microsoft.Microsoft.WindowsCalculator_8wekyb3d8bbwe
 winget uninstall microsoft.windowscommunicationsapps_8wekyb3d8bbwe
 
 
-# Unpin all Start Menu tiles
-If ([System.Environment]::OSVersion.Version.Build -ge 15063 -And [System.Environment]::OSVersion.Version.Build -le 16299) {
-    Get-ChildItem -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount' -Include '*.group' -Recurse | ForEach-Object {
-        $data = (Get-ItemProperty -Path "$($_.PsPath)\Current" -Name 'Data').Data -Join ','
-        $data = $data.Substring(0, $data.IndexOf(',0,202,30') + 9) + ',0,202,80,0,0'
-        Set-ItemProperty -Path "$($_.PsPath)\Current" -Name 'Data' -Type Binary -Value $data.Split(',')
-    }
-} ElseIf ([System.Environment]::OSVersion.Version.Build -eq 17133) {
-    $key = Get-ChildItem -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount' -Recurse | Where-Object { $_ -like "*start.tilegrid`$windows.data.curatedtilecollection.tilecollection\Current" }
-    $data = (Get-ItemProperty -Path $key.PSPath -Name 'Data').Data[0..25] + ([byte[]](202, 50, 0, 226, 44, 1, 1, 0, 0))
-    Set-ItemProperty -Path $key.PSPath -Name 'Data' -Type Binary -Value $data
-}
